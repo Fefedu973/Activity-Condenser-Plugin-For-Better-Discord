@@ -8,7 +8,7 @@ const fs = require("fs");
 const {Webpack, Webpack: {Filters}} = BdApi;
 const Dispatcher = Webpack.getModule(Filters.byProps("isDispatching", "subscribe"));
 const UserStore = Webpack.getModule(Filters.byProps("getUser"));
-var Id = UserStore.getCurrentUser().id;
+var Id = BdApi.Webpack.getModule(BdApi.Webpack.Filters.byProps("getCurrentUser")).getCurrentUser().id
 function presenceUpdateHandler(action) {
   var activity = BdApi.Webpack.getModule(BdApi.Webpack.Filters.byProps("getStatus", "getState")).getActivities(Id);
 
